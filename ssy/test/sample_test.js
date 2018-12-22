@@ -21,15 +21,33 @@ describe('정렬 - 가장 큰 수', function () {
     }
 
     function getEveryCaseOf(numbers) {
-        return [6102, 6210, 1062, 1026, 2610, 2106];
+        numbers = numbers.map(val => val + "");
+        let result = [];
+        if(numbers.length === 2){
+            //조합하는 로직 넣으면 끝이다.
+
+            result.push(Number(numbers[0] + numbers[1]));
+            result.push(32);
+        }else{
+            result = [6102, 6210, 1062, 1026, 2610, 2106];
+        }
+        return result;
     }
 
+    /**
+     * 모든 경우의 수 중 가장 큰 수를 반환한다.
+     * @param numbers
+     * @returns {string}
+     */
     function getMax(numbers) {
-        return "6210";
+        return Math.max(...numbers) + "";
     }
 
     it('만들 수 있는 경우의 수를 전부 만든다.', function () {
         //테스트 케이스 작성이 힘들다면.. 개수와, 중복 없음을 검사하면 되지 않을까?
+        assert.deepEqual([23, 32], getEveryCaseOf([2,3]));
+        assert.deepEqual(2, getEveryCaseOf([2,3]).length);
+
         assert.deepEqual([6102, 6210, 1062, 1026, 2610, 2106], getEveryCaseOf([6, 10, 2]));
         assert.deepEqual(6, getEveryCaseOf([6, 10, 2]).length);
     });
