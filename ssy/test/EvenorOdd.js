@@ -8,7 +8,8 @@ describe('홀수와 짝수', function () {
 
         return answer;
     }
-    
+
+
     it('맞음', function () {
         assert.equal(solution(5), "Odd");
     });
