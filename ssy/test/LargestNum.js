@@ -17,39 +17,31 @@ describe('가장 큰 수', function () {
     }
 
 
-    function sortByCipher(num) {
+    function sortByCipher(num) { // 앞자리 수에 따라 정렬을 한다.
 
-        for(let i=0; i<num-1; i++){
+        let index;
 
-            let index = i;
-            let su = 100;
+        for(let i=0; i<num.length-1; i++){
+            index = i;
+            iNum = num[i];
 
-            for(let j=i+1; j<num; j++){
-                if(num[index]/10 < num[j]/10 ){ // 앞자리 수 비교 (j가 더 클때)
-                    num[index] = num[j];
+            for(let j=i+1; j<num.length; j++){
+                if(num[index].toString()[0] < num[j].toString()[0] ){ // 앞자리 수 비교 (j가 더 클때)
+                    num[i] = num[j];
                     index = j;
-                }
-                // else if(num[i]/10 === num[j]/10){ // 앞자리 수 비교(같을 때)
-                //     while(){
-                //         if(num[i]/su !== num[j]/su){
-                //
-                //         }
-                //         su *= 10;
-                //     }
-                //     su = 10;
-                // }
+                } // if
             }
-            num[index] = num[i];
-
+            num[index] = iNum;
         }
-
 
         return num;
     }
 
     it('앞 자리수 정렬', function () {
         //assert.equal(solution([6, 10, 2]), "6210");
-        assert.deepEqual(sortByCipher([3, 30, 34, 5, 9]), [9,5,34,3,30]);
+        assert.deepEqual(sortByCipher([5, 30, 34, 3, 9]), [9,5,34,3,30]);
+        assert.deepEqual(sortByCipher([15, 300, 7, 1, 2]), [7,300,2,1,15]);
+        assert.deepEqual(sortByCipher([200,700,900,600,400,100]), [900,700,600,400,200,100]);
     });
 
     it('맞음', function () {
@@ -58,8 +50,8 @@ describe('가장 큰 수', function () {
     });
 
     it('테스트용', function () {
-        //assert.equal(solution([6, 10, 2]), "6210");
-        console.log(351561651%10);
+
+        console.log("3" > "2");
     });
 
 
