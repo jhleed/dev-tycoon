@@ -13,7 +13,45 @@ describe('나누어 떨어지는 수', function () {
                 index++;
             }
         }
+        function solution(arr, divisor) {
+            let answer = [];
+            let index = 0;
 
+            //배열을 다 돌면서 divisor과 나누어 나머지가 0이 되는 수를 answer 배열에 추가한다.
+
+            for(let i=0; i<arr.length; i++){
+                if(arr[i] % divisor === 0){
+                    answer[index] = arr[i];
+                    index++;
+                }
+            }
+
+            if(index === 0){ // 인덱스가ㅏ 0이면(아무것도 없으면) 정렬할 필요가 없기 때문에 -1를 return 해준다.
+                return [-1];
+            }
+
+            // 정렬한다.
+
+            for(let i=0; i<answer.length-1; i++){
+
+                let index = i;
+                let min = answer[i];
+
+                for(let j=i+1; j<answer.length; j++){
+
+                    if(min > answer[j] ){
+                        min = answer[j];
+                        index = j;
+                    }
+
+                }
+                answer[index] = answer[i];
+                answer[i] = min;
+            }
+
+
+            return answer;
+        }
         if(index === 0){ // 인덱스가ㅏ 0이면(아무것도 없으면) 정렬할 필요가 없기 때문에 -1를 return 해준다.
             return [-1];
         }
