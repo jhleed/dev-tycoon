@@ -3,32 +3,24 @@ const assert = require('assert');
 describe('다음 큰 숫자', function () {
     function solution(num) {
 
-        let isTrue = true;
-
         // num을 이진수로 바꿔준다.
-
         let firstNum = convertToBinaryNum(num) + "";
         let firstNumCount = countOneNum(firstNum);
-        let nowNum = num;
 
-        // num ++를 이진수로 바꾼다
+        let secondNum;
+        let secondNumCount;
 
-        while (isTrue) {
-            nowNum += 1;
+        // nowNum을 이진수로 바꾸고 1의 갯수를 센다
+        while (true) {
+            num++;
 
-            let secondNum = convertToBinaryNum(nowNum) + "";
-            let secondNumCount = countOneNum(secondNum);
+            secondNum = convertToBinaryNum(num) + "";
+            secondNumCount = countOneNum(secondNum);
 
-            // num과 num++의 1 갯수가 같은지 확인한다
-
-            if (firstNumCount === secondNumCount) {
-                isTrue = false;
-
-                // 맞으면 num++를 return한다.
-                return nowNum;
+            // num과 nowNum의 1갯수가 같은지 확인한다
+            if (firstNumCount === secondNumCount) { // 맞으면 num++를 return한다.
+                return num;
             }
-
-            // 아니면 계속 돈다
         }
     }
 
